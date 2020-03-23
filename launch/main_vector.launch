@@ -1,0 +1,14 @@
+<launch>
+
+  <arg name="cozmo_name" default="vector" />
+
+  <remap from="/camera/image" to="/vector/camera"/>
+  <remap from="/cmd_vel" to="/vector/cmd_vel"/>
+
+  <include file="$(find cozmo_gazebo)/launch/simple_main.launch"/>
+  <include file="$(find cozmo_gazebo)/launch/spawn_cozmo.launch">
+          <arg name="cozmo_name" value="$(arg cozmo_name)" />
+  </include>
+
+  <include file="$(find cozmo_gazebo)/launch/activate_ball_cmd_listener.launch"/>
+</launch>
